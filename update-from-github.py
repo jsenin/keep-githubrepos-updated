@@ -72,11 +72,10 @@ def clone_or_update(repos):
     for repo in repos:
         repo_url = repo['ssh_url']
         dirname = repo['name']
-        print "> name, url", dirname, repo_url
-        # if os.path.isdir(dirname):
-        #     update(dirname)
-        # else:
-        #     clone(repo_url)
+        if os.path.isdir(dirname):
+            update(dirname)
+        else:
+            clone(repo_url)
 
 def command_line_arguments():
     parser = argparse.ArgumentParser(description='Clone all repositories from a github organization or account.')
